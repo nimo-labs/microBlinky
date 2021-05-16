@@ -18,13 +18,15 @@
 /* Microcontroller */
 #include "NuMicro.h"
 
+/* Project configuration */
+#include "nimolib.h"
+#include "system.h"
+
 /* Books */
 #include <gpio.h>
 #include <delay.h>
 
-/* Project configuration */
-#include "nimolib.h"
-#include "system.h"
+
 
 void main(void)
 {
