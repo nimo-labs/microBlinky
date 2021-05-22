@@ -14,7 +14,7 @@
     "libraries": [
      	{
            	"libName": "nimolib",
-           	"libPath": "git@github.com:nimo-labs/nimolib.git",
+           	"libPath": "https://github.com/nimo-labs/nimolib.git",
     		"books":[
         		"gpio",
 				"delay"
