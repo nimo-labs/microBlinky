@@ -20,24 +20,53 @@
 
 /* Project configuration */
 #include "nimolib.h"
-#include "system.h"
 
 /* Books */
+#include <microNimo.h>
 #include <gpio.h>
 #include <delay.h>
+#include <usbVcom.h>
+#include <printf.h>
 
 
 
 void main(void)
 {
-    GPIO_PIN_DIR(LED_BLUE_PORT, LED_BLUE_PIN, GPIO_DIR_OUT);
-    GPIO_PIN_OUT(LED_BLUE_PORT, LED_BLUE_PIN, GPIO_OUT_LOW);
+    uint32_t counter = 0;
+    uint32_t loopLastTicks = 0;
+
+    GPIO_PIN_DIR(MN_LED_PORT, MN_LED_PIN, GPIO_DIR_OUT);
+    GPIO_PIN_OUT(MN_LED_PORT, MN_LED_PIN, GPIO_OUT_LOW);
 
     delaySetup(DELAY_BASE_MILLI_SEC); /*Clock timer at 1mS*/
+    usbVcomInit();
+
+    delayMs(2000);
+
+    printf("Hello from microNimo\r\n");
+
+    printf("Counting...\r\n");
+
+    loopLastTicks = delayGetTicks();
 
     while (1)
     {
-        GPIO_PIN_TGL(LED_BLUE_PORT, LED_BLUE_PIN);
-        delayMs(2000);
+        if(delayMillis(loopLastTicks, 2000))
+        {
+            loopLastTicks = delayGetTicks();
+            printf("%ld\r\n", counter);
+            counter ++;
+        }
+    }
+}
+
+void vcomRecv(uint8_t *data, uint32_t size)
+{
+    if(size > 0) /* Ensure that data was recieved*/
+    {
+        if('A' == data[0])
+        {
+            GPIO_PIN_TGL(MN_LED_PORT, MN_LED_PIN); /*If the user pressed the letter A then toggle the user LED*/
+        }
     }
 }

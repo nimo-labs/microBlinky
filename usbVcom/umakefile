@@ -1,5 +1,5 @@
 {
-	"target": "blinky",
+	"target": "usbVcom",
     "microcontroller": "m032lg6ae",
     "toolchain": "arm-none-eabi",
     "c_sources": [
@@ -16,18 +16,12 @@
            	"libName": "nimolib",
            	"libPath": "https://github.com/nimo-labs/nimolib.git",
     		"books":[
+				"microNimo",
         		"gpio",
-				"delay"
+				"delay",
+				"usbVcom",
+				"printf"
         	]
 	    }
-	],
-	"targets":[
-		{
-			"targetName": "program",
-			"depends": "all",
-			"content":[
-				"hidBoot w m032lg6ae 0x3000 ./build/blinky.bin"
-			]
-		}
 	]
 }

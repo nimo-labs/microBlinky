@@ -17,3 +17,10 @@
 
 #define UP_CLK 48000000
 
+/* usbVcom */
+#define USB_BUFFER_SIZE 64
+#define SIMPLE_VCOM_TX_BUFSIZE 100 /* TX buffer size */
+
+/* Printf */
+#define PRINTF_BUFF_SIZE 100
+#define PRINTF_UART PRINTF_USB_VCOM
