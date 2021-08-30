@@ -3,9 +3,7 @@
     "microcontroller": "m032lg6ae",
     "toolchain": "arm-none-eabi",
     "c_sources": [
-        "main.c",
-		"./umake/nimolib/uC/m032/_syscalls.c",
-		"./umake/nimolib/uC/m032/support.c"
+        "main.c"
     ],
     "includes": [
         "./"
