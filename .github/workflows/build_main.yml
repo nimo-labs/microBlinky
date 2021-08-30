@@ -3,7 +3,7 @@ name: Testsuite build
 on:
   push:
     branches:
-      - master 
+      - main 
 
 jobs:
   build:
