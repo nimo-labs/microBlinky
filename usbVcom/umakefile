@@ -2,6 +2,7 @@
 	"target": "usbVcom",
 	"microcontroller": "m032lg6ae",
 	"toolchain": "arm-none-eabi",
+	"ucLib": "nimolib-m032",
 	"c_sources": [
 		"main.c"
 	],
@@ -20,6 +21,11 @@
 				"usbVcom",
 				"printf"
 			]
+		},
+		{
+			"libName": "nimolib-m032",
+			"libPath": "https://github.com/nimo-labs/nimolib-m032.git",
+			"branch": "dev"
 		}
 	]
 }
