@@ -3,9 +3,8 @@ for d in */
 do
 	echo "Processing $d..."
 	cd $d
-	ls -l /root
-	../../umake.py clean
-	../../umake.py
+	/root/umake.py clean
+	/root/umake.py
 	make
 	if [ $? -eq 0 ]; then
 		echo -------------------
