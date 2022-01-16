@@ -1,29 +1,34 @@
 {
 	"target": "blinky",
-    "microcontroller": "m032lg6ae",
-    "toolchain": "arm-none-eabi",
-    "c_sources": [
-        "main.c"
-    ],
-    "includes": [
-        "./"
-    ],
-    "buildDir": "./build",
-    "libraries": [
-     	{
-           	"libName": "nimolib",
-           	"libPath": "https://github.com/nimo-labs/nimolib.git",
-    		"books":[
-        		"gpio",
-				"delay"
-        	]
-	    }
+	"microcontroller": "m032lg6ae",
+	"toolchain": "arm-none-eabi",
+	"ucLib": "nimolib-m032",
+	"c_sources": [
+		"main.c"
 	],
-	"targets":[
+	"includes": [
+		"./"
+	],
+	"buildDir": "./build",
+	"libraries": [
+		{
+			"libName": "nimolib",
+			"libPath": "https://github.com/nimo-labs/nimolib.git",
+			"books": [
+				"gpio",
+				"delay"
+			]
+		},
+		{
+			"libName": "nimolib-m032",
+			"libPath": "https://github.com/nimo-labs/nimolib-m032.git",
+		}
+	],
+	"targets": [
 		{
 			"targetName": "program",
 			"depends": "all",
-			"content":[
+			"content": [
 				"hidBoot w m032lg6ae 0x3000 ./build/blinky.bin"
 			]
 		}
