@@ -1,28 +1,19 @@
 name: Testsuite build
 
-# on:
-#   push:
-#     branches:
-#       - main 
+on:
+  push:
+    branches:
+      - main 
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v2
-#       with:
-#         repository: 'nimo-labs/umake'
-#     - uses: actions/checkout@v2
-#       with:
-#         path: 'microNIMO-examples'
-#     - name: umake
-#       run: |
-       
-        
-#     #- name: Compile
-#     - uses: fiam/arm-none-eabi-gcc@v1
-#       with:
-#         release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
-#     - run: |
-#         cd microNIMO-examples
-#         ./buildall.sh
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/nimo-labs/nimobuild:latest 
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        path: 'microNIMO-examples'
+    - run: |
+        cd microNIMO-examples
+        ./buildall.sh
+      name: Compile
