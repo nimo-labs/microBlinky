@@ -21,7 +21,8 @@
 		},
 		{
 			"libName": "nimolib-m032",
-			"libPath": "https://github.com/nimo-labs/nimolib-m032.git"
+			"libPath": "https://github.com/nimo-labs/nimolib-m032.git",
+			"branch": "dev"
 		}
 	],
 	"targets": [
