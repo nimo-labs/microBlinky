@@ -3,6 +3,9 @@ for d in */
 do
 	echo "Processing $d..."
 	cd $d
+	cd ../../
+	pwd
+	ls -l
 	../../umake.py clean
 	../../umake.py
 	make
