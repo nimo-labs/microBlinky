@@ -23,14 +23,5 @@
 			"libName": "nimolib-m032",
 			"libPath": "https://github.com/nimo-labs/nimolib-m032.git"
 		}
-	],
-	"targets": [
-		{
-			"targetName": "program",
-			"depends": "all",
-			"content": [
-				"hidBoot w m032lg6ae 0x3000 ./build/blinky.bin"
-			]
-		}
 	]
 }
