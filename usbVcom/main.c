@@ -15,9 +15,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Microcontroller */
-#include "NuMicro.h"
-
 /* Project configuration */
 #include "nimolib.h"
 
