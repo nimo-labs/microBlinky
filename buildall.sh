@@ -9,8 +9,8 @@ do
 		echo "Processing $d$f..."
 		echo -------------------
 		cp $f umakefile
-		/root/umake/umake clean
-		/root/umake/umake
+		/root/umake/umake.py clean
+		/root/umake/umake.py
 		make
 		if [ $? -eq 0 ]; then
 			echo -------------------
