@@ -1,0 +1,30 @@
+{
+	"target": "usbVcom",
+	"microcontroller": "m032lg2ae",
+	"toolchain": "arm-none-eabi",
+	"ucLib": "nimolib-m032",
+	"c_sources": [
+		"main.c"
+	],
+	"includes": [
+		"./"
+	],
+	"buildDir": "./build",
+	"libraries": [
+		{
+			"libName": "nimolib",
+			"libPath": "https://github.com/nimo-labs/nimolib.git",
+			"books": [
+				"microNimo",
+				"gpio",
+				"delay",
+				"usbVcom",
+				"printf"
+			]
+		},
+		{
+			"libName": "nimolib-m032",
+			"libPath": "https://github.com/nimo-labs/nimolib-m032.git"
+		}
+	]
+}
