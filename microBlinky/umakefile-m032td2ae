@@ -1,0 +1,27 @@
+{
+	"target": "blinky",
+	"microcontroller": "m032td2ae",
+	"toolchain": "arm-none-eabi",
+	"ucLib": "nimolib-m032",
+	"c_sources": [
+		"main.c"
+	],
+	"includes": [
+		"./"
+	],
+	"buildDir": "./build",
+	"libraries": [
+		{
+			"libName": "nimolib",
+			"libPath": "https://github.com/nimo-labs/nimolib.git",
+			"books": [
+				"gpio",
+				"delay"
+			]
+		},
+		{
+			"libName": "nimolib-m032",
+			"libPath": "https://github.com/nimo-labs/nimolib-m032.git"
+		}
+	]
+}

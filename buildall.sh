@@ -1,20 +1,28 @@
 #!/bin/bash
 for d in */
 do
-	echo "Processing $d..."
 	cd $d
-	/root/umake/umake.py clean
-	/root/umake/umake.py
-	make
-	if [ $? -eq 0 ]; then
+	rm -f umakefile
+	for f in umakefile*
+	do
 		echo -------------------
-    	echo Build of $d passed
+		echo "Processing $d$f..."
 		echo -------------------
-		cd ..
-	else
-    	echo build of $d failed
-		exit 1
-	fi
+		cp $f umakefile
+		/root/umake/umake.py clean
+		/root/umake/umake.py
+		make
+		if [ $? -eq 0 ]; then
+			echo -------------------
+			echo Build of $d$f passed
+			echo -------------------
+		else
+			echo build of $d$f failed
+			exit 1
+		fi
+		rm -f umakefile
+	done
+	cd ..
 done
 echo -------------------
 echo All builds completed successfully
