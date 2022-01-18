@@ -1,6 +1,6 @@
 {
 	"target": "usbVcom",
-	"microcontroller": "m032lg2ae",
+	"microcontroller": "m032ld2ae",
 	"toolchain": "arm-none-eabi",
 	"ucLib": "nimolib-m032",
 	"c_sources": [

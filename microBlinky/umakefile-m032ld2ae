@@ -1,6 +1,6 @@
 {
 	"target": "blinky",
-	"microcontroller": "m032lg6ae",
+	"microcontroller": "m032ld2ae",
 	"toolchain": "arm-none-eabi",
 	"ucLib": "nimolib-m032",
 	"c_sources": [
