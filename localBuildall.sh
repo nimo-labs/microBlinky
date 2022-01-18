@@ -8,7 +8,6 @@ do
 		echo -------------------
 		echo "Processing $d$f..."
 		echo -------------------
-		pwd
 		cp $f umakefile
 		umake clean
 		umake
