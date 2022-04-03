@@ -20,21 +20,15 @@
 
 /* Books */
 #include <microNimo.h>
-#include <gpio.h>
 #include <delay.h>
 #include <usbVcom.h>
 #include <printf.h>
 #include <adc.h>
 
-
-
 void main(void)
 {
     uint32_t battV = 0;
     uint32_t loopLastTicks = 0;
-
-    GPIO_PIN_DIR(MN_LED_PORT, MN_LED_PIN, GPIO_DIR_OUT);
-    GPIO_PIN_OUT(MN_LED_PORT, MN_LED_PIN, GPIO_OUT_LOW);
 
     delaySetup(DELAY_BASE_MILLI_SEC); /*Clock timer at 1mS*/
     usbVcomInit();
@@ -50,13 +44,13 @@ void main(void)
     {
         if(delayMillis(loopLastTicks, 2000))
         {
-            battV=adcReadChanSingle(15);
+            battV=adcReadChanSingle(MN_BATTV_ADC_CHAN);
             battV = (battV * 3298) / 4096;
             battV *= 126;
             battV = battV / 100;
 
             loopLastTicks = delayGetTicks();
-            printf("Battery voltage: %ldV\r\n", battV);
+            printf("Battery voltage: %ldmV\r\n", battV);
         }
     }
 }
