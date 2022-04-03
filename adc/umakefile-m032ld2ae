@@ -19,7 +19,8 @@
 				"gpio",
 				"delay",
 				"usbVcom",
-				"printf"
+				"printf",
+				"adc"
 			]
 		},
 		{
