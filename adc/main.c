@@ -24,12 +24,13 @@
 #include <delay.h>
 #include <usbVcom.h>
 #include <printf.h>
+#include <adc.h>
 
 
 
 void main(void)
 {
-    uint32_t counter = 0;
+    uint32_t battV = 0;
     uint32_t loopLastTicks = 0;
 
     GPIO_PIN_DIR(MN_LED_PORT, MN_LED_PIN, GPIO_DIR_OUT);
@@ -37,12 +38,11 @@ void main(void)
 
     delaySetup(DELAY_BASE_MILLI_SEC); /*Clock timer at 1mS*/
     usbVcomInit();
+    adcInit();
 
     delayMs(2000);
 
-    printf("Hello from microNimo\r\n");
-
-    printf("Counting...\r\n");
+    printf("microNimo ADC example\r\n");
 
     loopLastTicks = delayGetTicks();
 
@@ -50,20 +50,13 @@ void main(void)
     {
         if(delayMillis(loopLastTicks, 2000))
         {
-            loopLastTicks = delayGetTicks();
-            printf("%ld\r\n", counter);
-            counter ++;
-        }
-    }
-}
+            battV=adcReadChanSingle(15);
+            battV = (battV * 3298) / 4096;
+            battV *= 126;
+            battV = battV / 100;
 
-void vcomRecv(uint8_t *data, uint32_t size)
-{
-    if(size > 0) /* Ensure that data was recieved*/
-    {
-        if('A' == data[0])
-        {
-            GPIO_PIN_TGL(MN_LED_PORT, MN_LED_PIN); /*If the user pressed the letter A then toggle the user LED*/
+            loopLastTicks = delayGetTicks();
+            printf("Battery voltage: %ldV\r\n", battV);
         }
     }
 }
